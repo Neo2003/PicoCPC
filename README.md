@@ -27,6 +27,8 @@ It provides:
 + Nova RTC emulation including 32kb of NVRAM, supported by FurureOS, SymbOS 4.1 and UniDOS.
 + Physical floppy disks copy to eDSK on machines with build-in floppy disk drive or DDI.
 + Hard-disk rudamentary emulation, CH376 emulation planned but not done yet.
++ Optional CPC sound output to the jack, This won't work with Amstrad Plus DMA sound.  
++ Optional Willy OPL2/OPL3 emulation.  
 
 The GX4000 console is not supported since it does not have the required expension port.
 
@@ -94,7 +96,12 @@ Cartridges are designed for Amstrad Plus computer, but regular CPC can also bene
 
 Few cartridges with no Plus specific requirement car be run on regular CPC. Alcon 2020 is one of them, some games available in floppy format, packaged in cartridge format for the GX4000 can run on regular CPC.  
 
-### e) Hard-disk commands
+### e) ROM commands
+`|RLIST` show the ROMs currently managed by the PicoCPC.   
+`|RCAT` list ROMs available in the ROM folder on the SD-Card.  
+`|RLOAD,x,y` Load ROM with number x given by the `|RCAT` command in slot y.  
+
+### f) Hard-disk commands
 A set of commands and managed by the PicoCPC rom to give access to a virtual experimental HDD.  
 `|CAT` will list the content of the current path. The root folder is the HDD folder on the SD card.  
 `|CD,"foldername"` or `|CD,".."` will change the current folder to the subfolder "foldername" or go back one folder bellow.  
@@ -107,12 +114,14 @@ If you load or run a file with extension, don't copy the spaces between the name
 `|PLAY,"name"` will play the VGM file "name.vgm" using the emulated dual PSG or OP2/3. This supports more modes than the Playcity does in PSG.  
 You do not have to type the .vgm extension, but you can.  
 
-### f) Time commands
+### g) Time commands
 `|TIME` will return the current date and time. When RTC is not yet configured, this will return the date the PicoCPC firmware was compiled.  
 `|SETTIME,"YYYY-MM-DD hh:mm:ss"` will set the date and time and configure the RTC to this date and time.  
 
-### g) Various commands
+### h) Various commands
 `|RESET` Simply resets the computer  
+`|NOVAOFF` Disable the NovaRTC temporarely to load SymbOS since the support for this card is broken in SymbOS 4.0.  
+`|NOVAON` Activate NovaRTC temporarely until the PicoCPC is restarted.  
 
 ## 4) Using the PicoCPC with Oled screen and buttons
 There is 5 buttons on the daughter board to control the oled screen.  
