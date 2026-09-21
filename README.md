@@ -42,9 +42,13 @@ The main card provides I2S and I2C signal on a connector for the daughter board.
 
 The doughter board contains an RTC I2C chip, an I2C GPIO expender chip for the led and 5 buttons and an I2S DAC chip for sound output.
 
-![plot](./Pictures/Connectors.jpg) 
+![plot](./Pictures/Connectors.jpg)  
 
-## 3) Using the PicoCPC from the computer
+## 3) Availability
+
+The PicoCPC is not yet available to purshase. A first batch of 50 is currently privately distributed in order to discover and fix the firmware.  
+
+## 4) Using the PicoCPC from the computer
 
 A SD card is required to use the PicoCPC. If the PicoCPC is started without a SD card, it will display a message on the Oled screen to insert a SD card.
 
@@ -122,7 +126,7 @@ You do not have to type the .vgm extension, but you can.
 `|NOVAOFF` Disable the NovaRTC temporarely to load SymbOS since the support for this card is broken in SymbOS 4.0.  
 `|NOVAON` Activate NovaRTC temporarely until the PicoCPC is restarted.  
 
-## 4) Using the PicoCPC with Oled screen and buttons
+## 5) Using the PicoCPC with Oled screen and buttons
 There is 5 buttons on the daughter board to control the oled screen.  
 The 3 top buttons are from left to right: previous, next, select. 2 more buttons are present on the left side, these buttons are up and down.  
 Press either Previous or Next button to call the screen functions. Navigate to floppy disk tab, rom or cartrigdes tab with Next and previous buttons.  
@@ -133,7 +137,7 @@ A sub-menu then appears, use Up or Down to select your choice and click Select t
 
 ROM selection screen is not coded yet.  
 
-## 5) Technical information for programers
+## 6) Technical information for programers
 ### a) I/O port used
 The PicoCPC card listens to the I/O port #FBF2, no other port is used. Everything is sent on this port, commands and data. Checks on valid combinaisons is done mainly by the PicoCPC ROM, very few checks are done by the PicoCPC firmware, so be carefull or the firmware will crash.  
 
@@ -151,7 +155,7 @@ The PicoCPC has no access to the computer memory, then its ROM is the interface.
 Configuration file created by the Wizard contains comments to explain the settings.  
 
 
-## 6) configuration files
+## 7) configuration files
 
 The configuration done by the Wizard only sets up the standard features.  
 More function are available for you to activate in the configuration.  
@@ -199,14 +203,14 @@ This includes:
 
 Lines beginning with `#` are comments and ignored by the PicoCPC.  
 
-## About me
+## 8) About me
 
 You can find me on [Discord](https://discord.gg/ZXy3TZMSrj)  
 My Youtube channel [https://www.youtube.com/@RodrikStudio](https://www.youtube.com/@RodrikStudio)  
 
 Rodrik Studio  
 
-## Greetings
+## 9) Greetings
 
 Many thanks to Edouard BERGE for his [RASM compiler](https://github.com/EdouardBERGE/rasm) I used to make the CPC roms and also for his big help with the Z80 assembly.  
 Many thanks to FreddyV (the creator of the [PicoMEM](https://github.com/FreddyVRetro/ISA-PicoMEM)) for the help with component placement and selection and BOM creation.  
