@@ -109,7 +109,6 @@ A set of commands and managed by the PicoCPC rom to give access to a virtual exp
 `|LOAD,"name"[,addr]` loads a basic program or a binary program with optional target memory address  
 Writing to the virtual HDD is not yet implemented.  
 Running basic program does not work reliably. Often you will have to type run to launch it.  
-If you load or run a file with extension, don't copy the spaces between the name and extension, or this will not work.  
 
 `|PLAY,"name"` will play the VGM file "name.vgm" using the emulated dual PSG or OP2/3. This supports more modes than the Playcity does in PSG.  
 You do not have to type the .vgm extension, but you can.  
