@@ -17,14 +17,18 @@ The PicoCPC is an addon card connecting to the expansion port of Amstrad CPC fam
 + Amstrad 6128 Plus
 
 It provides:
-+ A  set of 2 floppy disk drives on all the family listed above, including ones with a built-in floppy disk drive.
++ A  set of 2 floppy disk drives on all the family listed above, including ones with a built-in floppy disk drive with support of the folowing protections:
+  + Speedlock / weak sectors
+  + GAP2 / oversize sectors
+  + Infogrames / Loriciel gap + overrun
 + From 0 to 1024kb of extended memory using Yarek mode above 512kb. Supported by SimbOS and FutureOS.
+  + 100% compatible with Amstrad 464 and 6128 Plus  
 + C3 memory mode perfect emulation for CPC 464, CPC 664 and 464 Plus.
 + Up to 16 roms.
 + CPR cartridge loading for Amstrad plus, but also for regular CPC for few regular CPC converted games for GX4000 and Alcon 2020. 
 + Playcity dual PSG sound card emulation including timer and counter with NMI activation on Cursor count or time passed.
   It does not support the 2 linked counters yet.
-+ Nova RTC emulation including 32kb of NVRAM, supported by FurureOS, SymbOS 4.1 and UniDOS.
++ Nova RTC emulation including 32kb of NVRAM, supported by FurureOS, SymbOS 4.0 and UniDOS.
 + Physical floppy disks copy to eDSK on machines with built-in floppy disk drive or DDI.
 + Hard-disk rudimentary emulation, CH376 emulation planned but not done yet.
 + Optional CPC sound output to the jack, This won't work with Amstrad Plus DMA sound.  
