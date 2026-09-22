@@ -81,15 +81,15 @@ Another utility command is |info which displays the Basic PicoCPC configuration 
 The virtual floppy system supports regular dsk and edsk file types, up to 2 sides and 80 tracks, this means special 720kb or 1200kb floppy disks are also supported.  
 When a USB stick is plugged to the PicoCPC, floppy disk images from the USB stick will be used instead of the ones on the SD card.  
 `|DCAT[,"expression"]`: List the DSK (*.dsk) files in FLOPPY folder on the SD card or USB stick root folder, along with a number.  
-	Result can be filtered,  
+	Result can be filtered using * or ? like `|DCAT,"*fight*` or `|DCAT,"p?n*`    
 `|DLOAD, number[,"B"]`: Exemple:  
 `|DLOAD,21,"B"` will load the disk with number 21 (see command above) in virtual drive B:  
 `|DLOAD,21` will load the disk with number 21 in virtual drive A:  
 	After this command is issued, A: or B: drive can be used like if a real floppy disk was inserted in the drive.  
 `|DGP[,"B"]`: Enable floppy disks grouping on the drive. Imagine you want to play a game that uses 2 floppy disk images and supports only drive A:  
-	You would then use these commands as exemple: |DGP |DLOAD,12 |DLOAD,13. The PicoCPC will load floppy number 12 is drive A: and record the disk 13. You can then CAT and RUN the game launcher. When the game asks for the second floppy, press on the Select button on the daughter board, the the PicoCPC will switch to floppy disk 13. If you press Select again, disk number 12 will be put back in the virtual drive. This is not limited to 2 images, up to 10 images can be preloaded. Then if disks x, y and z and selected, pressing the Select button will circle x, y, z, x, y, z...  
-`|DERESET`: Delete all grouping  
-`|DEJECT[,"B"]`: Remove the image in the virtual drive.  
+	You would then use these commands as exemple: `|DGP` `|DLOAD,12` `|DLOAD,13`. The PicoCPC will load floppy number 12 is drive A: and record the disk 13. You can then CAT and RUN the game launcher. When the game asks for the second floppy, press on the Select button on the daughter board, the the PicoCPC will switch to floppy disk 13. If you press Select again, disk number 12 will be put back in the virtual drive. This is not limited to 2 images, up to 10 images can be preloaded. Then if disks x, y and z and selected, pressing the Select button will circle x, y, z, x, y, z...  
+`|DRESET`: Delete all grouping  
+`|DEJECT[,"B"]`: Remove the image in the virtual drive. Drive 'A' by default without parameter.  
 `|DCOPY,"Name"`: Create a copy of the physical disk to dsk file named Name.dsk. Disk copy is slow but able to copy some protections.  
 Virtual floppy support sector writing (so save any file), but writing/formating of tracks is not yet implemented.  
 
@@ -99,14 +99,14 @@ Virtual floppy support sector writing (so save any file), but writing/formating 
 
 ### d) Cartridges commands
 Cartridges are designed for Amstrad Plus computer, but regular CPC can also benefit from cartridges.  
-`|CCAT` lists available cartridges in CPR (*.cpr) format in the Cartridge folder on the SD card, along with a number.  
+`|CCAT[,"expression"]` lists available cartridges in CPR (*.cpr) format in the Cartridge folder on the SD card, along with a number. see `|DCAT` for possible filtering espressions.   
 `|CRUN,number` will load and launch the cartridge. Cartridges are loaded in the upper half of the SRAM, this will then limit the expension memory to 512kb automatically when a cartridge is launched. the transfer of the cartridge to the SRAM is done by the computer and a raster effect is displayed in the border during this time.  
 
 Few cartridges with no Plus specific requirement car be run on regular CPC. Alcon 2020 is one of them, some games available in floppy format, packaged in cartridge format for the GX4000 can run on regular CPC.  
 
 ### e) ROM commands
 `|RLIST` show the ROMs currently managed by the PicoCPC.   
-`|RCAT` list ROMs available in the ROM folder on the SD-Card.  
+`|RCAT[,"expression"]` list ROMs available in the ROM folder on the SD-Card. Filters work like for DCAT and CCAT.   
 `|RLOAD,x,y` Load ROM with number x given by the `|RCAT` command in slot y.  
 
 ### f) Hard-disk commands
