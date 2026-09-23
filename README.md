@@ -31,7 +31,7 @@ It provides:
 + Nova RTC emulation including 32kb of NVRAM, supported by FurureOS, SymbOS 4.0 and UniDOS.
 + Physical floppy disks copy to eDSK on machines with built-in floppy disk drive or DDI.
 + Hard-disk rudimentary emulation, CH376 emulation planned but not done yet.
-+ Optional CPC sound output to the jack, This won't work with Amstrad Plus DMA sound.  
++ Optional CPC sound output to the jack supporting PCM output, Amstrad Plus DMA sound will be missing since not available on the port.  
 + Optional Willy OPL2/OPL3 emulation.  
 
 The GX4000 console is not supported since it does not have the required expension port.
@@ -165,7 +165,7 @@ The configuration done by the Wizard only sets up the standard features.
 More function are available for you to activate in the configuration.  
 
 This includes:  
-+ CPC sound output via the Jack port on the card. this is not perfect and does not output the digitalized voices or music due to the speed parameters change that the PicoCPC cannot cope with. The option is called `[PSG]`.  
++ CPC sound output via the Jack port on the card. This even outputs digitalized voices or music. The option is called `[PSG]`.  
 + NovaRTC complete emulation, it provides a saved time clock. To have time saved, install a CR2520 battery in the slot on the back of the daughter board. You will need to unplug it from the main card. The option is called `[RTC]`.  
 + Willy OPL2 and OPL3 emulation. To option is `[OPL]`.  
 +
