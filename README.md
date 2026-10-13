@@ -1,5 +1,7 @@
 # PicoCPC - An Amstrad CPC 464/664/6128 and Amstrad 464+/6128+ expansion  
 
+## PROJECT CANCELLED DUE TO JLC DOING CHEAT WORK THAT COSTED ME WAY TO MUCH AFTER 2 YEARS OF DEV AND 20% FAULTLY CARDS IN SHORT RUN THEN THEY FAIL APART.
+
 ## What is the PicoCPC  
 
 The PicoCPC is an expansion connecting to the CPC edge or centronic expansion port with an adapter and is in MX4 format.  
@@ -126,6 +128,7 @@ You do not have to type the .vgm extension, but you can.
 `|SETTIME,"YYYY-MM-DD hh:mm:ss"` will set the date and time and configure the RTC to this date and time.  
 
 ### h) Various commands
+`|CART` Start the physicaly inserted cartridge  
 `|RESET` Simply resets the computer  
 `|NOVAOFF` Disable the NovaRTC temporarily to load SymbOS since the support for this card is broken in SymbOS 4.0.  
 `|NOVAON` Activate NovaRTC temporarily until the PicoCPC is restarted.  
