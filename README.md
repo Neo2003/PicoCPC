@@ -130,6 +130,8 @@ You do not have to type the .vgm extension, but you can.
 `|TIME` will return the current date and time. When RTC is not yet configured, this will return the date the PicoCPC firmware was compiled.  
 `|SETTIME,"YYYY-MM-DD hh:mm:ss"` will set the date and time and configure the RTC to this date and time.  
 
+The time is used for HDD files save. When the SD-Card is inserted in a PC, files date will be correct if the RTC is configured.  
+
 ### h) Various commands
 `|CART` Start the physicaly inserted cartridge  
 `|RESET` Simply resets the computer  
