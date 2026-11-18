@@ -76,7 +76,7 @@ ROMs started by default overriding the CPC roms:
 The default overriding can be changed by editing the respective .cfg file in the root folder of the SD, then OS and basic of the CPC are used.
 The PicoCPC also comes with a special ROM with commands, a basic help for these commands can be accessed from the computer by using |help
 Another utility command is |info which displays the Basic PicoCPC configuration like detected model, emulated model and emulated memory amount.
-+ If you have a faulty DOS ROM on a CPC 664 or 6128, you can edit the configuration and add the DOS ROM in slot 7 to override the one in the machine. And yes it also works on 6128.
++ In case of faulty DOS ROM on a CPC 664 or 6128, the PicoCPC will be default override the one in the machine. You can comment it in cfg file.  
 
 ### c) Disk drive commands
 The virtual floppy system supports regular dsk and edsk file types, up to 2 sides and 80 tracks, this means special 720kb or 1200kb floppy disks are also supported.  
@@ -118,8 +118,8 @@ A set of commands and managed by the PicoCPC rom to give access to a virtual exp
 `|LOAD,"name"[,addr]` loads a basic program or a binary program with optional target memory address  
 `|SAVE,"name"[,A/B][,binary params]` save a BASIC / Ascii / Binary file  
   `binary param: Start Addr, Size [,Entry point addr]`  Refer to the basic command SAVE, it follows the sames rules.  
-`|ERA,"name"` Delete a file, `*` or `?` can be used  
-`|REN,"OriginalName","Newname"` rename a file  
+`|ERASE,"name"` Delete a file, `*` or `?` can be used  
+`|RENAME,"OriginalName","Newname"` rename a file  
 Running basic program does not work reliably. Often you will have to type `run` to launch it.  
 Saving Basic program in Ascii format works, the PicoCPC detokenize the file. Loading Ascii works too and the PicoCPC will tokenize the file.  
 
@@ -132,13 +132,27 @@ You do not have to type the .vgm extension, but you can.
 
 The time is used for HDD files save. When the SD-Card is inserted in a PC, files date will be correct if the RTC is configured.  
 
-### h) Various commands
+### h) Techni-Musique SSA1 (TMPI speech synthesizer)
+This is a speech card based on MAE8000 chip.  
+`|SAY,"Sentence"` will pronounce the sentence on the speakers connected to the jack port of the PicoCPC.  
+
+### i) Various commands
 `|CART` Start the physicaly inserted cartridge  
 `|RESET` Simply resets the computer  
 `|NOVAOFF` Disable the NovaRTC temporarily to load SymbOS since the support for this card is broken in SymbOS 4.0.  
 `|NOVAON` Activate NovaRTC temporarily until the PicoCPC is restarted.  
 
-## 5) Using the PicoCPC with Oled screen and buttons
+## 5) Using a USB mouse
+PicoCPC supports various USB mouses and will emulate a mouse for the CPC.  
+Be sure to not plug a 1000hz mouse, it will work badly.  
+
+## 6) Using a USB keyboard
+You can connect a USB keyboard to the PicoCPC, it will not disable the internal keyboard and will work along with it.  
+Keys are remapped to print on the CPC what is written on the keys, it's not a CPC keyboard mapping but a lot more convenient standard mapping.  
+Keyboard language must be configured in the cfg file in order to map keys properly.  
+It works even with an AZERTY keyboard plugged to a QUERTY CPC for exemple, in this case make sure the setting for CPC language in EN and the USB keyboard language is set to FR.  
+
+## 7) Using the PicoCPC with Oled screen and buttons
 There is 5 buttons on the daughter board to control the oled screen.  
 The 3 top buttons are from left to right: previous, next, select. 2 more buttons are present on the left side, these buttons are up and down.  
 Press either Previous or Next button to call the screen functions. Navigate to floppy disk tab, rom or cartridges tab with Next and previous buttons.  
@@ -147,9 +161,10 @@ A sub-menu then appears, use Up or Down to select your choice and click Select t
 
 ![plot](./Pictures/Oled.jpg) 
 
-ROM selection screen is not coded yet.  
+ROM selection will not let you unload any external rom if another connected device provides roms, the PicoCPC will know about it.  
+One exception is ROM 7, it can be override by suitable rom replacement.  
 
-## 6) Technical information for programmers
+## 8) Technical information for programmers
 ### a) I/O port used
 The PicoCPC card listens to the I/O port #FBF2, no other port is used. Everything is sent on this port, commands and data. Checks on valid combinations is done mainly by the PicoCPC ROM, very few checks are done by the PicoCPC firmware, so be careful or the firmware will crash.  
 
@@ -167,7 +182,7 @@ The PicoCPC has no access to the computer memory, then its ROM is the interface.
 Configuration file created by the Wizard contains comments to explain the settings.  
 
 
-## 7) configuration files
+## 9) Configuration files
 
 The configuration done by the Wizard only sets up the standard features.  
 More function are available for you to activate in the configuration.  
@@ -175,8 +190,8 @@ More function are available for you to activate in the configuration.
 This includes:  
 + CPC sound output via the Jack port on the card. This even outputs digitalized voices or music. The option is called `[PSG]`.  
 + NovaRTC complete emulation, it provides a saved time clock. To have time saved, install a CR2520 battery in the slot on the back of the daughter board. You will need to unplug it from the main card. The option is called `[RTC]`.  
-+ Willy OPL2 and OPL3 emulation. The option is `[OPL]`.  
-+ Techni-Musique SSA1 emualtion, the option is `[MAE]`.
++ Willy OPL2 and OPL3 emulation, the option is `[OPL]`.  
++ Techni-Musique SSA1 emulation, the option is `[MAE]`.
 +
 
     [CPC]  
@@ -218,17 +233,21 @@ This includes:
     # MAE8000 / Techni-Musique SSA1 (TMPI speech synthesizer)  
     # 0 to disable, 1 to enable  
 
+    [USB]
+    KeyboardLang=FR
+    # Possible values are EN, FR, ES
+
 
 Lines beginning with `#` are comments and ignored by the PicoCPC.  
 
-## 8) About me
+## 10) About me
 
 You can find me on [Discord](https://discord.gg/ZXy3TZMSrj)  
 My Youtube channel [https://www.youtube.com/@RodrikStudio](https://www.youtube.com/@RodrikStudio)  
 
 Rodrik Studio  
 
-## 9) Greetings
+## 11) Greetings
 
 Many thanks to Edouard BERGE for his [RASM compiler](https://github.com/EdouardBERGE/rasm) I used to make the CPC roms and also for his big help with the Z80 assembly.  
 Many thanks to FreddyV (the creator of the [PicoMEM](https://github.com/FreddyVRetro/ISA-PicoMEM)) for the help with component placement and selection and BOM creation.  
